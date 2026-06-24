@@ -2,8 +2,12 @@ name: Release
 
 on:
   push:
+    branches:
+      - main
+      - master
     tags:
       - 'v*' # Trigger on version tags (e.g., v0.1.0)
+  workflow_dispatch:
 
 env:
   CARGO_TERM_COLOR: always
@@ -98,9 +102,22 @@ jobs:
       - name: List artifacts
         run: ls -lh artifacts/
 
+      - name: Get version and tag
+        id: get_tag
+        shell: bash
+        run: |
+          VERSION=$(grep '^version =' Cargo.toml | head -n1 | cut -d '"' -f 2)
+          if [[ $GITHUB_REF == refs/tags/* ]]; then
+            TAG_NAME=${GITHUB_REF#refs/tags/}
+          else
+            TAG_NAME="v$VERSION"
+          fi
+          echo "tag_name=$TAG_NAME" >> $GITHUB_OUTPUT
+
       - name: Create GitHub Release and Upload Assets
         uses: softprops/action-gh-release@v2
         with:
+          tag_name: ${{ steps.get_tag.outputs.tag_name }}
           draft: false
           prerelease: false
           generate_release_notes: true

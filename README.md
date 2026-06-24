@@ -58,6 +58,15 @@
 
 ---
 
+## 📸 Screenshots
+
+<p align="center">
+  <img src="assets/screenshot-2026-06-24_12-37-16.png" width="48%" alt="Search and Navigation View"/>
+  <img src="assets/screenshot-2026-06-24_12-38-09.png" width="48%" alt="Playback and Controls View"/>
+</p>
+
+---
+
 ## 📋 Prerequisites
 
 Ensure these commands are installed on your system and available in your environment `PATH`:
