@@ -7,9 +7,9 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/ucheema/ytplay-tui/actions/workflows/ci.yml"><img src="https://github.com/ucheema/ytplay-tui/actions/workflows/ci.yml/badge.svg" alt="CI Status"/></a>
+  <a href="https://github.com/ucmz851/ytplay-tui/actions/workflows/ci.yml"><img src="https://github.com/ucmz851/ytplay-tui/actions/workflows/ci.yml/badge.svg" alt="CI Status"/></a>
   <a href="https://crates.io/crates/ytplay-tui"><img src="https://img.shields.io/badge/crates.io-v0.1.0-orange.svg?style=flat-square" alt="Crates.io"/></a>
-  <a href="https://github.com/ucheema/ytplay-tui/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square" alt="License"/></a>
+  <a href="https://github.com/ucmz851/ytplay-tui/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square" alt="License"/></a>
   <a href="https://rust-lang.org"><img src="https://img.shields.io/badge/rust-1.74%2B-blue.svg?style=flat-square&logo=rust" alt="Rust Version"/></a>
 </p>
 
@@ -78,7 +78,7 @@ This compiles the release target and sets up all binary assets, desktop applicat
 
 ```bash
 # Clone the repository
-git clone https://github.com/ucheema/ytplay-tui.git
+git clone https://github.com/ucmz851/ytplay-tui.git
 cd ytplay-tui
 
 # Build and install locally
@@ -151,8 +151,8 @@ All playlist, settings, and subscription states are serialized locally as human-
 Show your support for this project! Give it a star to watch the growth curve:
 
 <p align="center">
-  <a href="https://star-history.com/#ucheema/ytplay-tui&Date">
-    <img src="https://api.star-history.com/svg?repos=ucheema/ytplay-tui&type=Date" width="100%" alt="Star History Chart" />
+  <a href="https://star-history.com/#ucmz851/ytplay-tui&Date">
+    <img src="https://api.star-history.com/svg?repos=ucmz851/ytplay-tui&type=Date" width="100%" alt="Star History Chart" />
   </a>
 </p>
 
