@@ -111,21 +111,18 @@ Subscribe to channels directly from search results by pressing `u`.
 - Press `d` on a channel inside the subscription list to unsubscribe.
 
 ### Desktop Integration
-You can integrate `ytplay-tui` into your desktop environment's launcher menu using the provided `.desktop` file and app icon.
+You can automatically install and integrate `ytplay-tui` into your desktop environment's launcher menu using the provided `Makefile`.
 
-1. **Launcher Setup**: Copy the desktop entry file to your user application directory:
-   ```bash
-   cp assets/ytplay-tui.desktop ~/.local/share/applications/
-   ```
-2. **Icon Setup**: Copy the vector icon to your user icons directory:
-   ```bash
-   mkdir -p ~/.local/share/icons/hicolor/scalable/apps/
-   cp assets/icon.svg ~/.local/share/icons/hicolor/scalable/apps/ytplay-tui.svg
-   ```
-3. **Menu Refresh**: Trigger a rebuild of the desktop database:
-   ```bash
-   update-desktop-database ~/.local/share/applications/
-   ```
+- **User-space local integration** (recommended, does not require `sudo`):
+  ```bash
+  make install-user
+  ```
+- **System-wide integration** (requires `sudo`):
+  ```bash
+  sudo make install
+  ```
+
+This automates the placement of the binary, the desktop launcher shortcut `ytplay-tui.desktop`, and the scalable SVG app icon to standard environment paths, followed by refreshing your launcher's application list registry.
 
 ---
 

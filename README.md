@@ -65,45 +65,42 @@ brew install mpv yt-dlp
 
 ---
 
-## 🚀 Installation
+## 🚀 Installation & Desktop Integration
 
-Build `ytplay-tui` from source:
+You can install `ytplay-tui` automatically using the provided `Makefile`.
+
+### Option A: User-Space Local Installation (Recommended)
+
+This compiles the binary and installs it, along with the custom app icon and desktop launcher, to your local home directory folders. It does **not** require administrative (`sudo`) privileges:
 
 ```bash
 # Clone the repository
 git clone https://github.com/ucheema/ytplay-tui.git
 cd ytplay-tui
 
-# Build the release version
-cargo build --release
-
-# The compiled binary is located at:
-# ./target/release/ytplay-tui
+# Build and install locally
+make install-user
 ```
+*Note: Make sure `~/.local/bin` is added to your shell's `PATH` environment variable so your desktop environment can locate the executable.*
 
-To install the binary globally:
+### Option B: System-Wide Installation
+
+This builds and installs `ytplay-tui` system-wide for all users:
 
 ```bash
-cargo install --path .
+# Clone the repository
+git clone https://github.com/ucheema/ytplay-tui.git
+cd ytplay-tui
+
+# Build and install system-wide
+sudo make install
 ```
 
-### 🖥️ Desktop Integration (Linux)
+### 🧹 Uninstallation
 
-You can install a desktop launcher and application icon to open `ytplay-tui` straight from your application menu:
-
-```bash
-# 1. Install the desktop launcher file
-cp assets/ytplay-tui.desktop ~/.local/share/applications/
-
-# 2. Install the application icon
-mkdir -p ~/.local/share/icons/hicolor/scalable/apps/
-cp assets/icon.svg ~/.local/share/icons/hicolor/scalable/apps/ytplay-tui.svg
-
-# 3. Update desktop database (optional)
-update-desktop-database ~/.local/share/applications/
-```
-
-*Note: Make sure your globally compiled cargo binary path (typically `~/.cargo/bin`) is added to your environment `PATH` variable so the launcher can find the `ytplay-tui` command.*
+To remove `ytplay-tui` files from your system, run either:
+- **User-space**: `make uninstall-user`
+- **System-wide**: `sudo make uninstall`
 
 ---
 
