@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 160" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradient for Icon -->
+    <linearGradient id="iconBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e1e2e"/>
+      <stop offset="100%" stop-color="#11111b"/>
+    </linearGradient>
+
+    <!-- YouTube Red to Rust Orange gradient -->
+    <linearGradient id="logoGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ff4b4b"/>
+      <stop offset="100%" stop-color="#fe8019"/>
+    </linearGradient>
+
+    <!-- Neon Green/Cyan for prompt -->
+    <linearGradient id="promptGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#a6e3a1"/>
+      <stop offset="100%" stop-color="#94e2d5"/>
+    </linearGradient>
+
+    <!-- Neon Glow Filter -->
+    <filter id="neonGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="4" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+
+  <!-- Icon Squircle on the Left -->
+  <g transform="translate(20, 20)">
+    <rect x="0" y="0" width="120" height="120" rx="28" fill="url(#iconBg)" stroke="url(#logoGlow)" stroke-width="3" />
+    <g filter="url(#neonGlow)">
+      <!-- Prompt '>' -->
+      <path d="M 18,40 L 34,60 L 18,80" fill="none" stroke="url(#promptGrad)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" />
+      <!-- Play '▶' -->
+      <path d="M 50,35 L 80,60 L 50,85 Z" fill="#ff0000" stroke="#ff4b4b" stroke-width="2" stroke-linejoin="round" />
+      <!-- Flashing block -->
+      <rect x="94" y="40" width="10" height="40" rx="2" fill="#fe8019" />
+    </g>
+  </g>
+
+  <!-- Stylized Text 'ytplay-tui' on the Right -->
+  <g transform="translate(170, 95)">
+    <!-- "ytplay" in bold monospaced font -->
+    <text font-family="Consolas, Fira Code, Monaco, monospace" font-size="64" font-weight="900" fill="#cdd6f4" letter-spacing="1">ytplay<tspan fill="url(#logoGlow)">-tui</tspan></text>
+    <!-- Small subtext/tagline -->
+    <text x="5" y="32" font-family="Consolas, Fira Code, Monaco, monospace" font-size="16" fill="#a6adc8" letter-spacing="3">TERMINAL YOUTUBE PLAYER</text>
+  </g>
+</svg>

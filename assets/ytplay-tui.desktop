@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=ytplay-tui
+Comment=Terminal YouTube Player and Downloader
+Exec=ytplay-tui
+Icon=ytplay-tui
+Terminal=true
+Type=Application
+Categories=AudioVideo;Player;ConsoleOnly;
+Keywords=youtube;player;tui;music;video;

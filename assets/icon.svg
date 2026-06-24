@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <!-- Dark slate gradient for background -->
+    <linearGradient id="squircleBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e1e2e"/>
+      <stop offset="100%" stop-color="#11111b"/>
+    </linearGradient>
+
+    <!-- YouTube Red to Rust Orange glow gradient -->
+    <linearGradient id="borderGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ff4b4b"/>
+      <stop offset="100%" stop-color="#fe8019"/>
+    </linearGradient>
+
+    <!-- Neon Green/Cyan for prompt -->
+    <linearGradient id="promptGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#a6e3a1"/>
+      <stop offset="100%" stop-color="#94e2d5"/>
+    </linearGradient>
+
+    <!-- Neon Glow Filter -->
+    <filter id="neonGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+
+  <!-- Squircle Backdrop (Desktop Icon standard) -->
+  <rect x="32" y="32" width="448" height="448" rx="96" fill="url(#squircleBg)" stroke="url(#borderGrad)" stroke-width="6" />
+
+  <!-- The Command Prompt symbols: > ▶ █ -->
+  <g transform="translate(64, 160)" filter="url(#neonGlow)">
+    <!-- Terminal Prompt '>' -->
+    <path d="M 30,40 L 90,96 L 30,152" fill="none" stroke="url(#promptGrad)" stroke-width="18" stroke-linecap="round" stroke-linejoin="round" />
+    
+    <!-- Play Symbol '▶' (YouTube red play triangle) -->
+    <!-- Positioned to the right of the '>' -->
+    <path d="M 160,30 L 270,96 L 160,162 Z" fill="#ff0000" stroke="#ff4b4b" stroke-width="6" stroke-linejoin="round" />
+    
+    <!-- Flashing Block Cursor '█' -->
+    <rect x="310" y="36" width="40" height="120" rx="4" fill="#fe8019" />
+  </g>
+</svg>

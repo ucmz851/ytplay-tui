@@ -1,0 +1,12 @@
+# Rust/Cargo
+/target
+
+# IDE/Editors
+.idea/
+.vscode/
+*.rs.bk
+
+# System Files
+.DS_Store
+Thumbs.db
+/yttui-mpv-*.sock
