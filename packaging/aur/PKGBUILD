@@ -1,0 +1,38 @@
+# Maintainer: ucmz851 <https://github.com/ucmz851>
+pkgname=ytplay-tui
+pkgver=0.1.0
+pkgrel=1
+pkgdesc="A sleek, lightweight terminal YouTube player and downloader written in Rust"
+arch=('x86_64')
+url="https://github.com/ucmz851/ytplay-tui"
+license=('MIT')
+depends=('mpv' 'yt-dlp')
+makedepends=('rust' 'cargo')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
+sha256sums=('SKIP') # The checksum will be computed during submission/updates
+
+prepare() {
+  cd "${pkgname}-${pkgver}"
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+}
+
+build() {
+  cd "${pkgname}-${pkgver}"
+  cargo build --frozen --release --all-features
+}
+
+package() {
+  cd "${pkgname}-${pkgver}"
+  
+  # Install binary
+  install -Dm755 target/release/ytplay-tui "${pkgdir}/usr/bin/ytplay-tui"
+  
+  # Install desktop entry
+  install -Dm644 assets/ytplay-tui.desktop "${pkgdir}/usr/share/applications/ytplay-tui.desktop"
+  
+  # Install scalable icon
+  install -Dm644 assets/icon.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/ytplay-tui.svg"
+  
+  # Install license
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}
