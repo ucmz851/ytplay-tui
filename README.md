@@ -1,77 +1,80 @@
 <p align="center">
-  <img src="assets/logo.svg" width="320" alt="ytplay-tui logo"/>
-</p>
-
-<h1 align="center">ytplay-tui</h1>
-
-<p align="center">
-  <a href="https://github.com/ucheema/ytplay-tui/actions"><img src="https://github.com/ucheema/ytplay-tui/workflows/CI/badge.svg" alt="CI Status"/></a>
-  <a href="https://crates.io/crates/ytplay-tui"><img src="https://img.shields.io/badge/crates.io-v0.1.0-orange.svg" alt="Crates.io"/></a>
-  <a href="https://github.com/ucheema/ytplay-tui/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License"/></a>
-  <a href="https://rust-lang.org"><img src="https://img.shields.io/badge/rust-1.74%2B-blue.svg" alt="Rust Version"/></a>
+  <img src="assets/logo.svg" width="480" alt="ytplay-tui logo"/>
 </p>
 
 <p align="center">
-  <strong>ytplay-tui</strong> is a lightweight, high-performance terminal user interface (TUI) for searching, streaming, queuing, and downloading YouTube content. Written in Rust using the <code>ratatui</code> and <code>crossterm</code> libraries, it controls <code>mpv</code> via IPC sockets for playback and utilizes <code>yt-dlp</code> for downloads.
+  <strong>A premium, lightning-fast Terminal User Interface (TUI) YouTube player and downloader.</strong>
 </p>
+
+<p align="center">
+  <a href="https://github.com/ucheema/ytplay-tui/actions/workflows/ci.yml"><img src="https://github.com/ucheema/ytplay-tui/actions/workflows/ci.yml/badge.svg" alt="CI Status"/></a>
+  <a href="https://crates.io/crates/ytplay-tui"><img src="https://img.shields.io/badge/crates.io-v0.1.0-orange.svg?style=flat-square" alt="Crates.io"/></a>
+  <a href="https://github.com/ucheema/ytplay-tui/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square" alt="License"/></a>
+  <a href="https://rust-lang.org"><img src="https://img.shields.io/badge/rust-1.74%2B-blue.svg?style=flat-square&logo=rust" alt="Rust Version"/></a>
+</p>
+
+---
+
+## ⚡ Overview
+
+`ytplay-tui` is a lightweight, high-performance terminal utility written in Rust. It lets you search, stream, queue, and download YouTube content directly from your command line. Under the hood, it orchestrates a headless `mpv` process via local UNIX socket IPC and utilizes `yt-dlp` for lightning-fast downloads, wrapped in a beautiful, responsive Ratatui interface styled with a custom Gruvbox theme.
 
 ---
 
 ## ✨ Features
 
-- **🔍 Smart Search & Feed**: Fast scrape-based YouTube search with an intuitive interface.
-- **📺 Media Playback via `mpv` IPC**:
-  - Direct video/audio streaming using healthy, randomly selected public Invidious API instances as a fallback.
-  - Bidirectional communication with `mpv` via local UNIX sockets for state synchronization.
-  - Adjust volume, toggle pause, seek, and track current playing time.
-  - Play in full video mode or stream **audio-only** to save bandwidth.
-- **📁 Playback Queue**: Queue up multiple videos and advance automatically when the current track finishes.
-- **💾 Local Playlist Management**: Create custom playlists stored locally in `~/.config/yttui/playlists.json`.
-- **🔔 Channel Subscriptions**: Subscribe to your favorite creators and view their latest uploads directly via RSS feeds (`~/.config/yttui/subscriptions.json`).
-- **📥 Background Downloads**: Download videos (best quality, 1080p, 720p) or convert them to MP3 using `yt-dlp` in the background with real-time speed, size, and ETA updates.
-- **🎨 Premium Visuals**: Beautiful Gruvbox-themed layout with rich Nerd Font icon integration.
+<table>
+  <tr>
+    <td width="50%">
+      <h3>📺 Headless Streaming</h3>
+      Stream video or bandwidth-saving <b>audio-only</b> tracks seamlessly in the background via local UNIX sockets connected directly to <code>mpv</code>.
+    </td>
+    <td width="50%">
+      <h3>🔍 API-Keyless Search</h3>
+      Perform instant, zero-configuration searches using custom scraping methods fallback-supported by public healthy Invidious API instances.
+    </td>
+  </tr>
+  <tr>
+    <td width="50%">
+      <h3>💾 Local Playlists</h3>
+      Organize tracks into customizable local playlists saved under your user config directory, built entirely offline.
+    </td>
+    <td width="50%">
+      <h3>🔔 RSS Subscriptions</h3>
+      Subscribe directly to your favorite creators to aggregate and refresh their latest uploads using YouTube's XML feeds.
+    </td>
+  </tr>
+  <tr>
+    <td width="50%">
+      <h3>📥 Background Downloads</h3>
+      Queue background downloads in different quality streams (1080p, 720p, or MP3 conversion) with real-time ETA, size, and speed readouts.
+    </td>
+    <td width="50%">
+      <h3>🎨 Premium Visuals</h3>
+      Immersive user experience built around a retro-modern Gruvbox palette with extensive Nerd Font icon layouts.
+    </td>
+  </tr>
+</table>
 
 ---
 
 ## 📋 Prerequisites
 
-Before running `ytplay-tui`, make sure you have the following installed on your system and available in your `PATH`:
+Ensure these commands are installed on your system and available in your environment `PATH`:
 
-1. **Rust**: Cargo and Rust compiler (version 1.74+).
-2. **mpv**: The media player used for background playback.
-3. **yt-dlp**: Required for background downloading and stream parsing.
-4. **Nerd Font**: Required to correctly display terminal icons (e.g., [FiraCode Nerd Font](https://github.com/ryanoasis/nerd-fonts)).
-
-### Install Prerequisites (Linux/macOS)
-
-#### Debian/Ubuntu
-```bash
-sudo apt update
-sudo apt install mpv git-core
-# Install yt-dlp (recommended to install latest from official repo or via pip)
-sudo wget https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp -O /usr/local/bin/yt-dlp
-sudo chmod a+rx /usr/local/bin/yt-dlp
-```
-
-#### Arch Linux
-```bash
-sudo pacman -S mpv yt-dlp
-```
-
-#### macOS (Homebrew)
-```bash
-brew install mpv yt-dlp
-```
+- **Rust toolchain** (version 1.74+)
+- **mpv** (configured with IPC support, standard on Linux/macOS)
+- **yt-dlp** (ensure it is up-to-date to avoid streaming blocks)
+- A **Nerd Font** active in your terminal emulator (e.g., FiraCode Nerd Font)
 
 ---
 
-## 🚀 Installation & Desktop Integration
+## 🚀 Quick Start & Installation
 
-You can install `ytplay-tui` automatically using the provided `Makefile`.
+You can compile and automate the entire installation using the provided `Makefile`:
 
 ### Option A: User-Space Local Installation (Recommended)
-
-This compiles the binary and installs it, along with the custom app icon and desktop launcher, to your local home directory folders. It does **not** require administrative (`sudo`) privileges:
+This compiles the release target and sets up all binary assets, desktop application menus, and system icons inside your user home directory (does **not** require `sudo`):
 
 ```bash
 # Clone the repository
@@ -81,91 +84,80 @@ cd ytplay-tui
 # Build and install locally
 make install-user
 ```
-*Note: Make sure `~/.local/bin` is added to your shell's `PATH` environment variable so your desktop environment can locate the executable.*
+> [!TIP]
+> Ensure that `~/.local/bin` is added to your shell's `PATH` configuration (usually in your `.bashrc` or `.zshrc`) so your desktop launcher can find the command.
 
 ### Option B: System-Wide Installation
-
-This builds and installs `ytplay-tui` system-wide for all users:
+Installs `ytplay-tui` globally for all users on the machine:
 
 ```bash
-# Clone the repository
-git clone https://github.com/ucheema/ytplay-tui.git
-cd ytplay-tui
-
 # Build and install system-wide
 sudo make install
 ```
 
 ### 🧹 Uninstallation
-
-To remove `ytplay-tui` files from your system, run either:
-- **User-space**: `make uninstall-user`
+To completely scrub the application files from your system, run either:
+- **Local user**: `make uninstall-user`
 - **System-wide**: `sudo make uninstall`
 
 ---
 
-## 🎮 Keybindings & Controls
+## 🎮 Controls & Keybindings
 
-Press `?` inside the app at any time to open the interactive Help popup.
+Press `?` inside the app at any time to toggle the interactive Help menu.
 
-### General Controls
-| Key | Action |
-|---|---|
-| `q` / `Ctrl+C` | Quit the application |
-| `?` | Toggle Help Menu |
-| `/` | Enter Search Mode |
-| `Esc` | Clear Search / Return to Normal Mode |
-| `Tab` | Switch Focus between main Panes |
+### General App Navigation
+- <kbd>q</kbd> or <kbd>Ctrl+C</kbd> — Quit
+- <kbd>/</kbd> — Enter Search Mode (type query & press <kbd>Enter</kbd>)
+- <kbd>Esc</kbd> — Return to normal mode / Clear focus
+- <kbd>Tab</kbd> — Toggle panel focus (Feed, Playlists, Subscriptions)
+- <kbd>?</kbd> — Toggle popup Help screen
 
-### Navigation & Playback
-| Key | Action |
-|---|---|
-| `j` / `↓` | Move selection down |
-| `k` / `↑` | Move selection up |
-| `Enter` | Stream selected video |
-| `m` | Stream selected video as **Audio-Only** |
-| `a` | Add selected video to the playback Queue |
-| `d` | Delete selected item (remove from queue/playlist, unsubscribe, etc.) |
-| `Space` | Pause / Resume playback |
-| `l` / `→` | Seek forward 5 seconds |
-| `h` / `←` | Seek backward 5 seconds |
-| `+` / `=` | Increase volume |
-| `-` | Decrease volume |
-| `N` | Skip to the next video in the queue |
+### Playback Commands
+- <kbd>Space</kbd> — Pause / Resume track
+- <kbd>Enter</kbd> — Stream selected video
+- <kbd>m</kbd> — Stream selected video as **Audio-Only** (no video window)
+- <kbd>a</kbd> — Append selected track to the Queue
+- <kbd>d</kbd> — Remove item from active focus (Queue, Playlist, or Subscriptions)
+- <kbd>N</kbd> — Advance to next track in Queue
+- <kbd>l</kbd> / <kbd>→</kbd> — Seek forward 5 seconds *(outside playlists)*
+- <kbd>h</kbd> / <kbd>←</kbd> — Seek backward 5 seconds *(outside playlists)*
+- <kbd>+</kbd> / <kbd>=</kbd> — Raise volume
+- <kbd>-</kbd> — Lower volume
 
-### Views & Special Panels
-| Key | Action |
-|---|---|
-| `P` | Toggle local Playlists pane |
-| `S` | Toggle RSS Subscriptions pane |
-| `D` | Show Download options for the selected video |
-| `c` | Create a new local playlist |
-| `s` | Add selected video to a playlist |
-| `u` | Subscribe/Unsubscribe to the selected video's channel |
-| `r` | Refresh feed (when Subscriptions pane is focused) |
-
-*Note: Inside the **Subscriptions** pane, use `Tab` to toggle between the **Channels List** and the **Videos List**.*
+### Views & Management
+- <kbd>P</kbd> — Focus local Playlists
+- <kbd>S</kbd> — Focus Subscriptions feed *(use <kbd>Tab</kbd> inside to switch between Channels and Videos)*
+- <kbd>D</kbd> — Open Download format selection for the selected video
+- <kbd>c</kbd> — Create a new local playlist
+- <kbd>s</kbd> — Save selected video into a playlist
+- <kbd>u</kbd> — Subscribe / unsubscribe to the selected video's channel
+- <kbd>r</kbd> — Pull latest RSS uploads (when Subscriptions pane is focused)
 
 ---
 
-## 📁 File Structure & Configuration
+## 📂 Configuration Directories
 
-`ytplay-tui` stores user playlists and channel subscriptions locally as JSON files. They are automatically created upon running the app:
+All playlist, settings, and subscription states are serialized locally as human-readable JSON files:
 
-- **Playlists Storage**: `~/.config/yttui/playlists.json`
-- **Subscriptions Storage**: `~/.config/yttui/subscriptions.json`
-- **Downloads Location**: Videos are downloaded to your system's default `~/Downloads` folder.
-
----
-
-## 🛠️ Architecture
-
-- **Async Tasks**: YouTube scraping and video metadata fetching run on separate background worker threads to keep the UI buttery smooth.
-- **mpv UNIX Socket Controller**: Controls `mpv` by spinning up a subprocess using an IPC server socket at `/tmp/yttui-mpv-[PID].sock`. This ensures clean resource management when quitting.
-- **Fallback Stream Fetching**: If scraping fails or `mpv` cannot stream directly, `ytplay-tui` requests video details from a public Invidious API instance to obtain direct HTTP format streams.
+- **Playlists**: `~/.config/yttui/playlists.json`
+- **Subscriptions**: `~/.config/yttui/subscriptions.json`
+- **Downloads Destination**: Media files are saved directly to `~/Downloads/`.
 
 ---
 
-## 📝 License
+## 📈 Star History
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+Show your support for this project! Give it a star to watch the growth curve:
+
+<p align="center">
+  <a href="https://star-history.com/#ucheema/ytplay-tui&Date">
+    <img src="https://api.star-history.com/svg?repos=ucheema/ytplay-tui&type=Date" width="100%" alt="Star History Chart" />
+  </a>
+</p>
+
+---
+
+## 📄 License
+
+Distributed under the MIT License. See [LICENSE](LICENSE) for more details.
